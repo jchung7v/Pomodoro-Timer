@@ -1,7 +1,15 @@
 const workTime = parseInt(localStorage.getItem("workTime"));
 const breakTime = parseInt(localStorage.getItem("breakTime"));
 const totalSessions = parseInt(localStorage.getItem("sessions"));
+let pauseBtn = document.getElementById("pause-btn");
+let resumeBtn = document.getElementById("resume-btn");
+let restartBtn = document.getElementById("restart-btn");
 let sessionCounter;
+let paused = false;
+let restart = false;
+let elapsedTime = 0;
+let workTimer;
+let breakTimer;
 
 console.log(workTime + " " + breakTime + " " + totalSessions);
 
@@ -11,7 +19,7 @@ async function startSession() {
   for (let i = 1; i <= totalSessions; i++) {
     console.log("i: " + i);
     sessionCounter = i;
-    console.log("session counter: " + sessionCounter)
+    console.log("session counter: " + sessionCounter);
     document.getElementById("sessionNumber").innerHTML = "Session " + i;
     await startWorkTimer();
     await startBreakTimer();
@@ -22,14 +30,16 @@ async function startSession() {
 function startWorkTimer() {
   console.log("Work Timer Activated!");
   return new Promise((resolve) => {
-    TimeInSecs = workTime * 2;
+    TimeInSecs = workTime * 10;
     workTimer = setInterval(() => {
       if (TimeInSecs <= 0) {
         clearInterval(workTimer);
         document.getElementById("countDownText").innerHTML =
           "Session is Completed. It's time for the break";
         resolve();
-      } else {
+      } else if (!paused) {
+        elapsedTime++;
+        console.log("elapsedTime: " + elapsedTime);
         tick();
       }
     }, 1000);
@@ -39,9 +49,7 @@ function startWorkTimer() {
 function startBreakTimer() {
   console.log("Break Timer Activated!");
   return new Promise((resolve) => {
-    let paused = false;
-    let elapsedTime = 0;
-    TimeInSecs = breakTime * 2;
+    TimeInSecs = breakTime * 10;
     breakTimer = setInterval(() => {
       if (TimeInSecs <= 0) {
         clearInterval(breakTimer);
@@ -50,20 +58,28 @@ function startBreakTimer() {
         resolve();
       } else if (!paused) {
         elapsedTime++;
-        console.log(elapsedTime);
+        console.log("elapsedTime: " + elapsedTime);
         tick();
       }
     }, 1000);
   });
 }
 
-function pauseInterval() {
-    paused = true;
-}
+pauseBtn.addEventListener("click", () => {
+  paused = true;
+});
+resumeBtn.addEventListener("click", () => {
+  paused = false;
+});
+restartBtn.addEventListener("click", () => {
+  console.log("Restart Button is Activated!");
+  clearInterval(workTimer);
+  clearInterval(breakTimer);
 
-function resumeInterval() {
-    paused = false;
-}
+  TimeInSecs = workTime * 10;
+  elapsedTime = 0;
+  startWorkTimer();
+});
 
 function tick() {
   TimeInSecs--;
@@ -72,7 +88,7 @@ function tick() {
   let pretty =
     (mins < 10 ? "0" : "") + mins + " : " + (secs < 10 ? "0" : "") + secs;
 
-  document.getElementById("countDownText").innerHTML = pretty;
+  document.getElementById("countDown").innerHTML = pretty;
 }
 
 function checkStar() {

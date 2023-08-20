@@ -9,10 +9,16 @@
     <h1>Timer Page</h1>
     <div id="sessionNumber"></div>
     <div class="card">
-      <span id="countDownText" sytle="font-weight: bold"></span>
+      <span id="countDown" sytle="font-weight:bold"></span>
     </div>
-    <button onclick="pauseInterval()">Pause</button>
-    <button onclick="resumeInterval()">Resume</button>
+    <div class="card-text">
+      <span id="countDownText" sytle="font-weight:bold"></span>
+    </div>
+    <button id="pause-btn">Pause</button>
+    <button id="resume-btn">Resume</button>
+    <div>
+      <button id="restart-btn">Restart the timer</button>
+    </div>
     <div id="stickers"></div>
     <script src="timer.js"></script>
   </body>
