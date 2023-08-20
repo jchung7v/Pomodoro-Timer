@@ -1,16 +1,17 @@
 const workTime = parseInt(localStorage.getItem("workTime"));
 const breakTime = parseInt(localStorage.getItem("breakTime"));
 const totalSessions = parseInt(localStorage.getItem("sessions"));
-let sessionCounter = 0;
+let sessionCounter;
 
 console.log(workTime + " " + breakTime + " " + totalSessions);
 
-initiateSessions();
+startSession();
 
-async function initiateSessions() {
+async function startSession() {
   for (let i = 1; i <= totalSessions; i++) {
-    console.log(i);
+    console.log("i: " + i);
     sessionCounter = i;
+    console.log("session counter: " + sessionCounter)
     document.getElementById("sessionNumber").innerHTML = "Session " + i;
     await startWorkTimer();
     await startBreakTimer();
@@ -21,7 +22,7 @@ async function initiateSessions() {
 function startWorkTimer() {
   console.log("Work Timer Activated!");
   return new Promise((resolve) => {
-    TimeInSecs = workTime * 5;
+    TimeInSecs = workTime * 2;
     workTimer = setInterval(() => {
       if (TimeInSecs <= 0) {
         clearInterval(workTimer);
@@ -38,19 +39,30 @@ function startWorkTimer() {
 function startBreakTimer() {
   console.log("Break Timer Activated!");
   return new Promise((resolve) => {
+    let paused = false;
+    let elapsedTime = 0;
     TimeInSecs = breakTime * 2;
     breakTimer = setInterval(() => {
       if (TimeInSecs <= 0) {
         clearInterval(breakTimer);
         document.getElementById("countDownText").innerHTML =
           "Session is Completed. It's time for the break";
-        sessionCounter++;
         resolve();
-      } else {
+      } else if (!paused) {
+        elapsedTime++;
+        console.log(elapsedTime);
         tick();
       }
     }, 1000);
   });
+}
+
+function pauseInterval() {
+    paused = true;
+}
+
+function resumeInterval() {
+    paused = false;
 }
 
 function tick() {
@@ -63,8 +75,17 @@ function tick() {
   document.getElementById("countDownText").innerHTML = pretty;
 }
 
-function checkStart() {
-    if (sessionCounter == 2) {
-        document.getElementById("stickers").innerHTML = 
+function checkStar() {
+  console.log("Star Sticker is Activated!");
+  return new Promise((resolve) => {
+    let starElement = document.createElement("img");
+    starElement.src = "star.jpg";
+    starElement.alt = "Star Sticker";
+    starElement.style.width = "50px";
+
+    if (sessionCounter >= 1 && sessionCounter <= 5) {
+      document.getElementById("stickers").appendChild(starElement);
     }
+    resolve();
+  });
 }
