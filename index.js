@@ -1,7 +1,7 @@
-const workButtonsContainer = document.getElementById("workButtonsContainer");
-const breakButtonsContainer = document.getElementById("breakButtonsContainer");
+const workButtonsContainer = document.getElementById("work-btn-container");
+const breakButtonsContainer = document.getElementById("break-btn-container");
 const sessionButtonsContainer = document.getElementById(
-  "sessionButtonsContainer"
+  "session-btn-container"
 );
 const GO = document.getElementById("GO");
 
@@ -11,6 +11,7 @@ let sessions = 0;
 let workTimeInSecs;
 let breakTimeInSecs;
 let workTimer;
+let isClicked = false;
 
 workButtonsContainer.addEventListener("click", (e) => {
   console.log(e);
@@ -45,4 +46,18 @@ GO.addEventListener("click", () => {
     document.getElementById("notice").innerHTML =
       "Please press all three types of buttons";
   }
+});
+
+const allButtons = document.querySelectorAll(".buttons");
+
+allButtons.forEach((button) => {
+  button.addEventListener("click", function() {
+    if (this.classList.contains("button-clicked-color")) {
+      this.classList.add("button-original-color");
+      this.classList.remove("button-clicked-color");
+    } else {
+      this.classList.add("button-clicked-color");
+      this.classList.remove("button-original-color");
+    }
+  });
 });
