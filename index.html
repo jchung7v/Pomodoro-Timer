@@ -7,22 +7,23 @@
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <h1>Select Work & Break Time and GO</h1>
+    <h1>Pomodoro Timer</h1>
+    <hr>
     <div class="buttons">
       <div id="work-btn-container">
-        <h3>1. How long is a work/study time?</h3>
+        <h3>How long is your work time?</h3>
         <button class="button" id="w20-btn" data-work="1">20 mins</button>
         <button class="button" id="w25-btn" data-work="25">25 mins</button>
         <button class="button" id="w30-btn" data-work="30">30 mins</button>
       </div>
       <div id="break-btn-container">
-        <h3>2. How long is a break?</h3>
+        <h3>How long is your break?</h3>
         <button class="button" id="b5-btn" data-break="1">5 mins</button>
         <button class="button" id="b10-btn" data-break="10">10 mins</button>
         <button class="button" id="b15-btn" data-break="15">15 mins</button>
       </div>
       <div id="session-btn-container">
-        <h3>3. How many sessions?</h3>
+        <h3>How many sessions?</h3>
         <button class="button" id="s1-btn" data-session="1">1</button>
         <button class="button" id="s2-btn" data-session="2">2</button>
         <button class="button" id="s3-btn" data-session="3">3</button>
@@ -30,9 +31,9 @@
         <button class="button" id="s5-btn" data-session="5">5</button>
       </div>
     </div>
-    <div>
-      <h3>What are you hesitating for?</h3>
-      <button id="GO">GO</button>
+    <hr>
+    <div class="button-container">
+      <button class="button" id="go-btn">GO</button>
     </div>
     <div id="notice"></div>
     <script src="index.js"></script>

@@ -3,7 +3,7 @@ const breakButtonsContainer = document.getElementById("break-btn-container");
 const sessionButtonsContainer = document.getElementById(
   "session-btn-container"
 );
-const GO = document.getElementById("GO");
+const GO = document.getElementById("go-btn");
 
 let workTime = 0;
 let breakTime = 0;
@@ -61,22 +61,9 @@ GO.addEventListener("click", () => {
 });
 
 function deselectAllButtons(container) {
-  container.querySelectorAll("buttons").forEach((button) => {
+  container.querySelectorAll("button").forEach((button) => {
     button.classList.add("button-original-color");
     button.classList.remove("button-clicked-color");
   });
 }
 
-// const allButtons = document.querySelectorAll("button");
-
-// allButtons.forEach((button) => {
-//   button.addEventListener("click", function() {
-//     if (this.classList.contains("button-clicked-color")) {
-//       this.classList.add("button-original-color");
-//       this.classList.remove("button-clicked-color");
-//     } else {
-//       this.classList.add("button-clicked-color");
-//       this.classList.remove("button-original-color");
-//     }
-//   });
-// });

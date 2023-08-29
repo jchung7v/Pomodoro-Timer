@@ -30,7 +30,7 @@ async function startSession() {
 function startWorkTimer() {
   console.log("Work Timer Activated!");
   return new Promise((resolve) => {
-    TimeInSecs = workTime * 10;
+    TimeInSecs = workTime * 10 + 1;
     workTimer = setInterval(() => {
       if (TimeInSecs <= 0) {
         clearInterval(workTimer);
@@ -40,7 +40,7 @@ function startWorkTimer() {
       } else if (!paused) {
         elapsedTime++;
         console.log("elapsedTime: " + elapsedTime);
-        tick();
+        setTimeout(tick(), 1000);
       }
     }, 1000);
   });
@@ -49,7 +49,7 @@ function startWorkTimer() {
 function startBreakTimer() {
   console.log("Break Timer Activated!");
   return new Promise((resolve) => {
-    TimeInSecs = breakTime * 10;
+    TimeInSecs = breakTime * 10 + 1;
     breakTimer = setInterval(() => {
       if (TimeInSecs <= 0) {
         clearInterval(breakTimer);
@@ -59,7 +59,7 @@ function startBreakTimer() {
       } else if (!paused) {
         elapsedTime++;
         console.log("elapsedTime: " + elapsedTime);
-        tick();
+        setTimeout(tick(), 1000);
       }
     }, 1000);
   });
@@ -73,6 +73,7 @@ resumeBtn.addEventListener("click", () => {
 });
 restartBtn.addEventListener("click", () => {
   console.log("Restart Button is Activated!");
+  paused = false;
   clearInterval(workTimer);
   clearInterval(breakTimer);
 
@@ -88,7 +89,7 @@ function tick() {
   let pretty =
     (mins < 10 ? "0" : "") + mins + " : " + (secs < 10 ? "0" : "") + secs;
 
-  document.getElementById("countDown").innerHTML = pretty;
+  document.getElementById("countdown").innerHTML = pretty;
 }
 
 function checkStar() {
