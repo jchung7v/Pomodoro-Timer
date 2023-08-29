@@ -19,6 +19,10 @@ workButtonsContainer.addEventListener("click", (e) => {
     workTime = parseInt(e.target.dataset.work, 10);
     localStorage.setItem("workTime", workTime);
     console.log(workTime);
+
+    deselectAllButtons(workButtonsContainer);
+    e.target.classList.remove("button-original-color");
+    e.target.classList.add("button-clicked-color");
   }
 });
 
@@ -27,6 +31,10 @@ breakButtonsContainer.addEventListener("click", (e) => {
     breakTime = parseInt(e.target.dataset.break, 10);
     localStorage.setItem("breakTime", breakTime);
     console.log(breakTime);
+
+    deselectAllButtons(breakButtonsContainer);
+    e.target.classList.remove("button-original-color");
+    e.target.classList.add("button-clicked-color");
   }
 });
 
@@ -35,6 +43,10 @@ sessionButtonsContainer.addEventListener("click", (e) => {
     sessions = parseInt(e.target.dataset.session, 10);
     localStorage.setItem("sessions", sessions);
     console.log(sessions);
+
+    deselectAllButtons(sessionButtonsContainer);
+    e.target.classList.remove("button-original-color");
+    e.target.classList.add("button-clicked-color");
   }
 });
 
@@ -48,16 +60,23 @@ GO.addEventListener("click", () => {
   }
 });
 
-const allButtons = document.querySelectorAll(".buttons");
-
-allButtons.forEach((button) => {
-  button.addEventListener("click", function() {
-    if (this.classList.contains("button-clicked-color")) {
-      this.classList.add("button-original-color");
-      this.classList.remove("button-clicked-color");
-    } else {
-      this.classList.add("button-clicked-color");
-      this.classList.remove("button-original-color");
-    }
+function deselectAllButtons(container) {
+  container.querySelectorAll("buttons").forEach((button) => {
+    button.classList.add("button-original-color");
+    button.classList.remove("button-clicked-color");
   });
-});
+}
+
+// const allButtons = document.querySelectorAll("button");
+
+// allButtons.forEach((button) => {
+//   button.addEventListener("click", function() {
+//     if (this.classList.contains("button-clicked-color")) {
+//       this.classList.add("button-original-color");
+//       this.classList.remove("button-clicked-color");
+//     } else {
+//       this.classList.add("button-clicked-color");
+//       this.classList.remove("button-original-color");
+//     }
+//   });
+// });
