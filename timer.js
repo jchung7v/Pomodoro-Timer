@@ -40,7 +40,7 @@ function startWorkTimer() {
       } else if (!paused) {
         elapsedTime++;
         console.log("elapsedTime: " + elapsedTime);
-        setTimeout(tick(), 1000);
+        tick();
       }
     }, 1000);
   });
@@ -59,7 +59,7 @@ function startBreakTimer() {
       } else if (!paused) {
         elapsedTime++;
         console.log("elapsedTime: " + elapsedTime);
-        setTimeout(tick(), 1000);
+        tick();
       }
     }, 1000);
   });
