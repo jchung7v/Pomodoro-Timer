@@ -4,13 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pomodoro Timer</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <h1>Pomodoro Timer</h1>
-    <hr>
     <div class="buttons">
-      <img src="./images/timer.png" id="timerImage">
+      <img src="./images/icon-128.png" id="timerImage" />
       <div id="work-btn-container">
         <h3>How long is your work time?</h3>
         <button class="button" id="w20-btn" data-work="1">20 mins</button>
@@ -31,12 +30,9 @@
         <button class="button" id="s4-btn" data-session="4">4</button>
         <button class="button" id="s5-btn" data-session="5">5</button>
       </div>
-    </div>
-    <hr>
-    <div class="button-container">
+      <div id="notice"></div>
       <button class="button" id="go-btn">GO</button>
     </div>
-    <div id="notice"></div>
     <script src="popup.js"></script>
   </body>
 </html>

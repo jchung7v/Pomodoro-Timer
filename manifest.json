@@ -17,5 +17,9 @@
     "alarms",
     "notifications",
     "storage"
-  ]
+  ],
+  "background": {
+    "service-worker": "service-worker.js",
+    "persistent": false
+  }
 }
