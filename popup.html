@@ -7,8 +7,10 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <h1>Pomodoro Timer</h1>
-    <div class="buttons">
+    <!-- Popup(Home) Page -->
+    <div class="popup-page">
+      <h1>Pomodoro Timer</h1>
+      <div class="btn-container">
       <img src="./images/icon-128.png" id="timerImage" />
       <div id="work-btn-container">
         <h3>How long is your work time?</h3>
@@ -30,9 +32,34 @@
         <button class="button" id="s4-btn" data-session="4">4</button>
         <button class="button" id="s5-btn" data-session="5">5</button>
       </div>
+    
+    </div>
       <div id="notice"></div>
       <button class="button" id="go-btn">GO</button>
     </div>
-    <script src="popup.js"></script>
+    <!-- Timer Page -->
+    <div class="timer-page">
+      <h1>Timer</h1>
+      <div id="back-icon">
+        <a href="popup.html"><img src="./images/back.svg" alt="back-icon" /></a>
+      </div>
+      <div id="sessionNumber"></div>
+      <div id="countdown"></div>
+      <div class="card-text">
+        <span id="countDownText"></span>
+      </div>
+      <div class="icon-container">
+        <img
+          id="play-pause-icon"
+          src="./images/play-pause.svg"
+          alt="play-pause-icon"
+        />
+        <img id="reset-icon" src="./images/restart.svg" alt="restart-icon" />
+      </div>
+      <button id="reset-all">Reset All</button>
+      <div id="stickers"></div>
+      <script src="popup.js"></script>
+    </div>
+
   </body>
 </html>

@@ -10,6 +10,12 @@
       "48": "images/icon-48.png",
       "128": "images/icon-128.png"
     },
+    "content_scripts": [
+      {
+        "css": ["styles.css"],
+        "js": ["popup.js"]
+      }
+    ],
     "default_title": "Click Me",
     "default_popup": "popup.html"
   },

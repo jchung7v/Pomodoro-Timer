@@ -82,3 +82,19 @@ h3 {
   font-size: 20pt;
   font-weight: 600;
 }
+
+/* ---------------------- */
+/* PopUp Page             */
+/* ---------------------- */
+.popup-page {
+  display: block;
+  position: fixed;
+}
+
+/* ---------------------- */
+/* Timer Page             */
+/* ---------------------- */
+.timer-page {
+  display: none;
+  position: fixed;
+}
